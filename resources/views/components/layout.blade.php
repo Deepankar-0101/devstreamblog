@@ -83,7 +83,7 @@ backdrop-filter:blur(12px);
                 </a> --}}
                 
              
-                    <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" alt="pika" class="w-8 h-8 ml-1 bg-black  rounded-full object-cover">
+                    <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" alt="pika" class="w-8 h-8 ml-1 bg-black  rounded-full object-cover">
 
                 <form action="{{ route('logout') }}" method="POST" class="">
     @csrf
@@ -97,7 +97,7 @@ backdrop-filter:blur(12px);
                 </a>
                 
              
-                    <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" alt="pika" class="w-8 h-8 bg-black  rounded-full object-cover">
+                    <img src="{{ Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" alt="pika" class="w-8 h-8 bg-black  rounded-full object-cover">
 
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
@@ -208,7 +208,7 @@ backdrop-filter:blur(12px);
             <article class="group cursor-pointer">
                <a href="/blog/{{$fblog->id}}">
                 <div class="relative overflow-hidden rounded-2xl mb-6 bg-slate-200 aspect-16/10">
-                    <img src="{{ asset('storage/' . $fblog->image) }}" alt="blog-image.jgp" 
+                    <img src="{{ Storage::disk('s3')->url($fblog->image) }}" alt="blog-image.jgp" 
                          class="w-full h-full object-cover group-hover:scale-105 transition duration-500 transform ease-in-out" alt="Post thumbnail">
                     <div class="absolute top-4 left-4">
                         {{-- <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">Development</span> --}}
@@ -225,7 +225,7 @@ backdrop-filter:blur(12px);
                 <div class="mt-6 flex items-center justify-between">
                     <a href="{{ route('bloger.profile', $fblog->blogers->id) }}">
                     <div class="flex items-center gap-2 bg-indigo-100 hover:bg-indigo-200 p-1 rounded">
-                        <img class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold" src="{{ asset('storage/' . $fblog->blogers->logo) }}">
+                        <img class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold" src="{{ Storage::disk('s3')->url($fblog->blogers->logo) }}">
                         <span class="text-sm font-semibold text-black rounded hover:text-white hover:bg-indigo-600 px-1">{{$fblog->blogers->name}}</span>
                     </div>
                     </a>

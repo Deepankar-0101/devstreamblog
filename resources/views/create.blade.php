@@ -35,7 +35,7 @@
                 {{-- <button class="text-sm font-bold text-indigo-600 hover:text-indigo-700">Login</button> --}}
                 @auth 
                     <div class="flex gap-x-3">
-                {{-- <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
+                {{-- <img src="{{ Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
    <button type="submit" class="cursor-pointer  bg-slate-900 text-white px-2 p-1  rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">LogOut</button>
@@ -60,17 +60,12 @@
             <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
             @auth
             <a href="/bloger/{{auth()->user()->blogers->id}}"class="ml-10">
-            <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
+            <img src="{{ Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
             <span class="text-[12px]">{{auth()->user()->blogers->name}}</span>
             @endauth</a>
             </div> 
 
-<div class="px-4">
-<p>Dear <span class="text-sm font-semibold text-pink-700 uppercase tracking-widest">Blogger</span>
-You're posting this blog as :</p>
-<a href="/bloger/{{ auth()->user()->blogers->id }}">
-<span class="text-indigo-800 underline">{{ auth()->user()->blogers->name }}</span></a>
-    </div>
+
     <div class="min-h-screen bg-[#F8FAFC] pb-20">
         <div class="glass sticky top-0 z-50 border-b border-slate-200 bg-white/80">
             <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -92,7 +87,12 @@ You're posting this blog as :</p>
                 </div>
             </div>
         </div>
-
+<div class="px-4 text-center">
+<p>Dear <span class="text-sm font-semibold text-pink-700 uppercase tracking-widest">Blogger</span>
+You're posting this blog as :</p>
+<a href="/bloger/{{ auth()->user()->blogers->id }}">
+<span class="text-indigo-800 underline">{{ auth()->user()->blogers->name }}</span></a>
+    </div>
         <main class="max-w-4xl mx-auto px-6 pt-12">
             <form action="/blogs" method="POST" id="post-form" class="space-y-12"  enctype="multipart/form-data">
                 @csrf

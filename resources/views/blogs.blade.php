@@ -61,7 +61,7 @@
             <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
             @auth
             <a href="/bloger/{{auth()->user()->blogers->id}}"class="ml-10">
-            <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
+            <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
             <span class="text-[12px]">{{auth()->user()->blogers->name}}</span>
             @endauth</a>
             </div> 
@@ -109,7 +109,7 @@
                                 </div>
                             @endif
                             
-                            <img src="{{ asset('storage/' . $blog->image) }}" 
+                            <img src="{{ Storage::disk('s3')->url($blog->image) }}" 
                                  alt="{{ $blog->title }}"
                                  class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out">
                             
@@ -139,7 +139,7 @@
                             <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
                                 <a href="{{ route('bloger.profile', $blog->blogers->id) }}" class="cursor-pointer">
                                 <div class="flex items-center gap-3">
-                                    <img src="{{ asset('storage/' . $blog->blogers->logo) }}" 
+                                    <img src="{{ Storage::disk('s3')->url($blog->blogers->logo) }}" 
                                          class="w-8 h-8 rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                                     <span class="text-xs font-bold text-slate-700">{{ $blog->blogers->name }}</span>
                                 </div></a>

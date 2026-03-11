@@ -34,7 +34,7 @@
                 {{-- <button class="text-sm font-bold text-indigo-600 hover:text-indigo-700">Login</button> --}}
                 @auth 
                     <div class="flex gap-x-3">
-                {{-- <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
+                {{-- <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
    <button type="submit" class="cursor-pointer  bg-slate-900 text-white px-2 p-1  rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">LogOut</button>
@@ -59,7 +59,7 @@
             <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
             @auth
             <a href="/bloger/{{auth()->user()->blogers->id}}"class="ml-10">
-            <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
+            <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
             <span class="text-[12px]">{{auth()->user()->blogers->name}}</span>
             @endauth</a>
             </div> 
@@ -136,7 +136,7 @@ class="block w-full pl-6 pr-4 py-3 bg-transparent border-b-2 border-slate-200 te
                                class="relative flex flex-col items-center justify-center w-full h-80 border-2 border-dashed border-slate-200 rounded-[2.5rem] bg-white hover:bg-slate-50 transition-all cursor-pointer overflow-hidden">
                             
                             <img id="image-preview"
-                                 src="{{ $blog->image ? asset('storage/'.$blog->image) : 'https://placehold.co/1200x600' }}"
+                                 src="{{ Storage::disk('s3')->url($blog->image) ? Storage::disk('s3')->url($blog->image) : 'https://placehold.co/1200x600' }}"
                                  class="absolute inset-0 w-full h-full object-cover">
 
                             <input type="file" name="image" id="image" class="hidden" accept="image/*" onchange="previewImage(this)">

@@ -30,7 +30,7 @@
         <div>
             <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Hosting</h4>
             <ul class="space-y-2 text-sm">
-                <li>Laravel : <a href="https://railway.com/" class="text-red-600 underline cursor-pointer">Railway</a></li>
+                <li>Laravel : <a href="https://cloud.laravel.com" class="text-red-600 underline cursor-pointer">Laravel Cloud</a></li>
                 <li>Mysql DB: <a href="https://tidbcloud.com" class=" text-red-600 underline cursor-pointer">tidbcloud.com</a></li>
                 <li>Email SMTP SERVER: <a href="https://mailtrap.io/home" class=" text-red-600 underline cursor-pointer">mailtrap.io</a></li>
             

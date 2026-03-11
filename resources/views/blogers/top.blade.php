@@ -35,7 +35,7 @@
                 {{-- <button class="text-sm font-bold text-indigo-600 hover:text-indigo-700">Login</button> --}}
                 @auth 
                     <div class="flex gap-x-3">
-                {{-- <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
+                {{-- <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
    <button type="submit" class="cursor-pointer  bg-slate-900 text-white px-2 p-1  rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">LogOut</button>
@@ -60,7 +60,7 @@
             <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
             @auth
             <a href="/bloger/{{auth()->user()->blogers->id}}"class="ml-10">
-            <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
+            <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
             <span class="text-[12px]">{{auth()->user()->blogers->name}}</span>
             @endauth</a>
             </div> 
@@ -94,7 +94,7 @@
 
                     <div class="relative mb-6">
                         <div class="w-24 h-24 mx-auto relative z-10">
-                            <img src="{{ asset('storage/' . $bloger->logo) }}" 
+                            <img src="{{Storage::disk('s3')->url($bloger->logo) }}" 
                                  alt="{{ $bloger->name }}" 
                                  class="w-full h-full rounded-4xlject-cover shadow-inner border-4 border-white">
                         </div>

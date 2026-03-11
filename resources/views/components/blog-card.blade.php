@@ -6,7 +6,7 @@
     <div class="shrink-0">
         <img
         class="w-20 h-20 md:w-28 md:h-28 object-cover rounded-lg group-hover:scale-105 transition duration-500"
-        src="{{ asset('storage/' . $blog->image) }}"
+        src="{{Storage::disk('s3')->url($blog->image) }}"
         alt="cover.jpg">
     </div>
 
@@ -32,7 +32,7 @@
             {{-- Author --}}
             <a href="{{ route('bloger.profile', $blog->blogers->id) }}">
             <div class="flex items-center gap-2">
-                 <img class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold" src="{{ asset('storage/' . $blog->blogers->logo) }}" alt="bloger.jpg">
+                 <img class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold" src="{{Storage::disk('s3')->url($blog->blogers->logo) }}" alt="bloger.jpg">
                 <span class="text-xs md:text-sm font-semibold text-slate-700 cursor-pointer hover:bg-indigo-300">
                     {{$blog->blogers->name}}
                 </span>

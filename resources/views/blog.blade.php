@@ -35,7 +35,7 @@
                 {{-- <button class="text-sm font-bold text-indigo-600 hover:text-indigo-700">Login</button> --}}
                 @auth 
                     <div class="flex gap-x-3">
-                {{-- <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
+                {{-- <img src="{{Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
    <button type="submit" class="cursor-pointer  bg-slate-900 text-white px-2 p-1  rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">LogOut</button>
@@ -60,7 +60,7 @@
             <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
             @auth
             <a href="/bloger/{{auth()->user()->blogers->id}}"class="ml-10">
-            <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
+            <img src="{{ Storage::disk('s3')->url(auth()->user()->blogers->logo) }}" class="w-8 h-8 rounded-full text-center" alt="pika">
             <span class="text-[12px]">{{auth()->user()->blogers->name}}</span>
             @endauth</a>
             </div>  
@@ -123,7 +123,7 @@
                 <div class="flex items-center justify-between pt-6 border-t border-slate-100">
                     <div class="flex items-center gap-3">
                         {{-- <img src="{{ asset('storage/' . $blog->blogers->logo) }}" alt="img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover"> --}}
-                        <img src="{{ $blog->image_url }}" alt="blog-img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover">
+                        <img src="{{ Storage::disk('s3')->url($blog->blogers->logo) }}" alt="blog-img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover">
                         <div>
                             <p class="font-bold text-slate-900">{{ $blog->blogers->name }}</p>
                             <p class="text-xs text-slate-400 font-medium">{{ $blog->created_at->format('M d, Y') }} </p>
@@ -134,7 +134,7 @@
 
             @if($blog->image)
             <div class="mb-12">
-                <img src="{{ asset('storage/' . $blog->image) }}" class="w-full h-450px object-cover rounded-[2.5rem] shadow-2xl shadow-slate-200">
+                <img src="{{Storage::disk('s3')->url($blog->image) }}" class="w-full h-450px object-cover rounded-[2.5rem] shadow-2xl shadow-slate-200">
             </div>
             @endif
 
