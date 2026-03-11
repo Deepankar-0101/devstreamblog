@@ -122,7 +122,8 @@
 
                 <div class="flex items-center justify-between pt-6 border-t border-slate-100">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('storage/' . $blog->blogers->logo) }}" alt="img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover">
+                        {{-- <img src="{{ asset('storage/' . $blog->blogers->logo) }}" alt="img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover"> --}}
+                        <img src="{{ $blog->image_url }}" alt="blog-img.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover">
                         <div>
                             <p class="font-bold text-slate-900">{{ $blog->blogers->name }}</p>
                             <p class="text-xs text-slate-400 font-medium">{{ $blog->created_at->format('M d, Y') }} </p>

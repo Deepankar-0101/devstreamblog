@@ -70,7 +70,7 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if ($request->hasFile('image')) {
-        $path = $request->file('image')->store('blogs', 'public'); // stores in storage/app/public/blogs
+        $path = $request->file('image')->storePublicly('blogs', 'public'); // stores in storage/app/public/blogs
         $validated['image'] = $path; // save path to database
     }
         $blog=Auth::user()->blogers->blogs()->create(Arr::except($validated,'tags'));

@@ -1,7 +1,7 @@
 <x-mail::message>
 # Blog Successfully Posted 🎉
 
-Hi {{ auth()->user()->$bloger->name }},  
+Hi {{ auth()->user()->name }},  
 
 Your blog post titled **"{{ $blog->title }}"** was successfully published on DevStreamBlog.
 

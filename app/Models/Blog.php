@@ -12,6 +12,15 @@ class Blog extends Model
 {
     /** @use HasFactory<\Database\Factories\BlogFactory> */
     use HasFactory;
+    public function getImageUrlAttribute()
+{
+    if (!$this->image) {
+        return asset('images/placeholder.png'); // Fallback if no image
+    }
+
+    // This automatically uses whatever disk is set in your .env
+    return Storage::disk(config('filesystems.disk'))->url($this->image);
+}
      public function tags()
      {
         return $this->belongsToMany(Tag::class);
