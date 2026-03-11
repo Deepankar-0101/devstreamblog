@@ -77,11 +77,9 @@
                     </a>
                     {{-- <span class="text-sm font-semibold text-slate-500 uppercase tracking-widest">Draft in Bloggers</span> --}}
                     
-                  <div class="px-4">
-<p>Dear <span class="text-sm font-semibold text-pink-700 uppercase tracking-widest">Blogger</span>
-You're posting this blog as:</p>
-<a href="/bloger/{{ auth()->user()->blogers->id }}">
-<span class="text-indigo-800 underline">{{ auth()->user()->blogers->name }}</span></a>
+                  <div class="px-2">
+You're posting this blog as:<a href="/bloger/{{ auth()->user()->blogers->id }}">
+<span class="text-pink-700 underline">{{ auth()->user()->blogers->name }}</span></a>
     </div>
                     
                 </div>
