@@ -77,7 +77,12 @@
                     </a>
                     {{-- <span class="text-sm font-semibold text-slate-500 uppercase tracking-widest">Draft in Bloggers</span> --}}
                     
-                  <p class="text-red-600">You will recieve a mail after posting this blog as this app is connected to an email SMTP server :<a href="https://mailtrap.io/home" class="underline text-green-600">MailTrap</a></p>
+                  <div class="px-4 text-center">
+<p>Dear <span class="text-sm font-semibold text-pink-700 uppercase tracking-widest">Blogger</span>
+You're posting this blog as :</p>
+<a href="/bloger/{{ auth()->user()->blogers->id }}">
+<span class="text-indigo-800 underline">{{ auth()->user()->blogers->name }}</span></a>
+    </div>
                     
                 </div>
                 <div class="flex items-center gap-3">
@@ -87,12 +92,8 @@
                 </div>
             </div>
         </div>
-<div class="px-4 text-center">
-<p>Dear <span class="text-sm font-semibold text-pink-700 uppercase tracking-widest">Blogger</span>
-You're posting this blog as :</p>
-<a href="/bloger/{{ auth()->user()->blogers->id }}">
-<span class="text-indigo-800 underline">{{ auth()->user()->blogers->name }}</span></a>
-    </div>
+        <p class="text-red-600">You will recieve a mail after posting this blog as this app is connected to an email SMTP server :<a href="https://mailtrap.io/home" class="underline text-green-600">MailTrap</a></p>
+
         <main class="max-w-4xl mx-auto px-6 pt-12">
             <form action="/blogs" method="POST" id="post-form" class="space-y-12"  enctype="multipart/form-data">
                 @csrf
