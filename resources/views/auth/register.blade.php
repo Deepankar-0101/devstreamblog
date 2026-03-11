@@ -19,7 +19,7 @@
 
   <nav class="glass sticky top-0 z-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="">
+            <a href="/">
             <div class="flex items-center gap-1">
                 <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
                     <img src="{{ Vite::asset('resources/images/dev.png') }}" alt="">
@@ -29,6 +29,7 @@
             </a>
              <div class=" px-2 hidden md:flex items-center gap-8 text-md font-semibold text-slate-600">
                 <a href="/blogs" class=" hover:text-indigo-600 transition-colors underline">Blogs</a>
+                <a href="/top-blogers" class=" hover:text-indigo-600 transition-colors underline">Top-Bloggers</a>
 
             </div> 
             <div class="flex items-center gap-4">
@@ -60,14 +61,14 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-bold text-slate-700">Name</label>
-                                <input type="text" name="name" id="name" required placeholder="Brad Pitt"
+                                <input type="text" name="name" id="name" required placeholder="ex:Brad Pitt"
                                     class="mt-1 focus:text-indigo-700  block w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
                                 @error('name') <p class="mt-1 text-xs text-red-500 italic">{{ $message }}</p> @enderror
                             </div>
                             
                             <div>
                                 <label for="email" class="block text-sm font-bold text-slate-700">Email Address</label>
-                                <input type="email" name="email" id="email" required placeholder="bradpitt@gmail.com"
+                                <input type="email" name="email" id="email" required placeholder="ex:bradpitt@gmail.com"
                                     class="mt-1 focus:text-indigo-700  block w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
                                 @error('email') <p class="mt-1 text-xs text-red-500 italic">{{ $message }}</p> @enderror
                             </div>
@@ -104,7 +105,8 @@
                                 <label for="logo" class="block text-sm font-bold text-slate-700">Blogger's Logo</label>
                                 <input type="file" name="logo" id="blog_logo"
                                     class="mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 transition cursor-pointer">
-                            </div>
+                                @error('logo') <p class="mt-1 text-xs text-red-500 italic">{{ $message }}</p> @enderror
+                                </div>
                         </div>
                     </div>
 

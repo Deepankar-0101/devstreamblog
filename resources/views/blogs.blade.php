@@ -36,7 +36,7 @@
                 {{-- <button class="text-sm font-bold text-indigo-600 hover:text-indigo-700">Login</button> --}}
                 @auth 
                     <div class="flex gap-x-3">
-                {{-- <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> --}}
+                 <img src="{{ asset('storage/' . auth()->user()->blogers->logo) }}" class="w-8 h-8" alt="pika"> 
                 <form action="{{ route('logout') }}" method="POST">
     @csrf
    <button type="submit" class="cursor-pointer  bg-slate-900 text-white px-2 p-1  rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200">LogOut</button>
@@ -159,8 +159,13 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900">No stories found</h3>
                         <p class="text-slate-500">Be the first to publish a new post!</p>
-                        <a href="/posts/create" class="mt-6 inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-indigo-100">Write Now</a>
-                    </div>
+                        @guest 
+                        <a href="/login" class="mt-6 inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-indigo-100">Write Now</a>
+                    @endguest
+                        @auth
+                    <a href="/blogs/create" class="mt-6 inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-indigo-100">Write Now</a>
+                    @endauth
+                </div>
                 @endforelse
 
             </div>
