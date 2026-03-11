@@ -90,8 +90,9 @@ You're posting this blog as:<a href="/bloger/{{ auth()->user()->blogers->id }}">
                 </div>
             </div>
         </div>
-        <p class="text-red-600 px-4 text-center">---You will recieve a mail after posting this blog as this app is connected to an email SMTP server :<a href="https://mailtrap.io/home" class="underline text-green-600">MailTrap</a>---</p>
-
+        <div class="px-4 text-center">
+        <p class="text-red-600 ">---#You will recieve a mail after posting this blog as this app is connected to an email SMTP server :<a href="https://mailtrap.io/home" class="underline text-green-600">MailTrap</a>---</p>
+</div>
         <main class="max-w-4xl mx-auto px-6 pt-12">
             <form action="/blogs" method="POST" id="post-form" class="space-y-12"  enctype="multipart/form-data">
                 @csrf
