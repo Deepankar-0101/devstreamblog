@@ -14,8 +14,8 @@ class Blog extends Model
     use HasFactory;
     public function getImageUrlAttribute()
 {
-    if (!$this->image) {
-        return asset('images/placeholder.png'); // Fallback if no image
+    if (empty($this->image)) {
+        return asset('images/default-image.png'); // Fallback if no image
     }
 
     // This automatically uses whatever disk is set in your .env
